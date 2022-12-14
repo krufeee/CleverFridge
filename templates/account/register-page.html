@@ -1,0 +1,7 @@
+<div>
+    <form action="{% url 'register user' %}" method="post" style="text-align: center">
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+        {% csrf_token %}
+    </form>
+</div>

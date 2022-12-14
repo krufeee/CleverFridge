@@ -1,0 +1,33 @@
+{% extends 'base/core.html' %}
+{% block page_content %}
+    <div style="text-align: center">
+        <p>
+            {{ object.recipe_name }}
+        </p>
+        <p>
+            {{ object.recipe_type }}
+        </p>
+        <p>
+            <img width="300" src="/media/{{ object.recipe_picture }}">
+        </p>
+        <p>
+            Uploaded from: {{ object.user }}
+        </p>
+        <p>
+            {{ object.recipe_cooking_instruction }}
+        </p>
+        <ul>
+            {% for ingredient in object.ingredients.all %}
+                <p>{{ ingredient.name }}</p>
+            {% endfor %}
+        </ul>
+        {% if  object.user == requested_user %}
+            <p>
+                <a href="{% url 'edit recipe' pk=object.pk %}">Edit</a>
+                <a href="{% url 'delete recipe' pk=object.pk %}">Delete</a>
+            </p>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

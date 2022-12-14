@@ -1,0 +1,29 @@
+{% extends 'base/core.html' %}
+{% block page_content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/my_recipes.css' %}">
+    <h1 style="text-align: center">Possible Recipes</h1>
+    <div style="text-align: center;">
+        {% if possible_recipes %}
+            <ul>
+                {% for recipe in possible_recipes %}
+                    <li class="grid-container">
+                        <p>{{ recipe.recipe_name }}</p>
+                        <p>{{ recipe.recipe_type }}</p>
+                        <p><img width="200" height="150" src="/media/{{ recipe.recipe_picture }}"
+                                alt="/media/NoPictureForRecipe.jpg">
+                        </p>
+                        <p>
+                            <button type="button" class="ingredient-button"
+                                    onclick="window.location.href='{% url 'detail recipe' pk=recipe.pk %}'">
+                                Details
+                            </button>
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong> Sorry, but there is no matches for you. It`s time to visit grocery shop.</strong>
+        {% endif %}
+    </div>
+{% endblock %}

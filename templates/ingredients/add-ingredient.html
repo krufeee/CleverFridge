@@ -1,0 +1,14 @@
+{% extends 'base/core.html' %}
+
+{% block page_content %}
+
+<div style="text-align: center">
+    <form method="post" action="{% url 'add ingredient' %}">
+        {{ form.as_p }}
+
+        <button type="submit">Add ingredient to the fridge</button>
+        {% csrf_token %}
+    </form>
+
+</div>
+{% endblock %}

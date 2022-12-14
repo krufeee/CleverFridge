@@ -1,0 +1,7 @@
+<div style="text-align: center">
+    <form method="post" action="{% url 'delete ingredient' pk=object.pk %}">
+        {{ form.as_p }}
+        <button>Delete</button>
+        {% csrf_token %}
+    </form>
+</div>

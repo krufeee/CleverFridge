@@ -1,0 +1,31 @@
+{% extends 'base/core.html' %}
+{% block page_content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/profile_details.css' %}">
+
+    <div style="text-align: center" class="grid-container">
+
+        <h1>{{ object.username }}</h1>
+        <p>{{ object.gender }}</p>
+        <p>{{ object.email }}</p>
+        {% if object.first_name %}
+            {{ object.first_name }}
+        {% endif %}
+
+        <div>
+            {% if is_owner %}
+                <button type="button" class="ingredient-button"
+                        onclick="window.location.href='{% url 'edit user' pk=object.pk %}'">
+                    Edit Profile
+                </button>
+                <button type="button" class="ingredient-button"
+                        onclick="window.location.href='{% url 'delete user' pk=object.pk %}'">
+                    Delete Profile
+                </button>
+
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}

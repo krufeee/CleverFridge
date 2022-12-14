@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CleverFridge</title>
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+</head>
+<body>
+<nav>
+    <ul>
+        <li {% if request.path == '/homepage/' %} style="display: none;" {% endif %}>
+            <button type="button" class="navbar-button"
+                    onclick="window.location.href='{% url 'index' %}'">
+                Home
+            </button>
+        </li>
+        <li{% if request.path != '/homepage/' %} style="display: none;" {% endif %}>
+            <button type="button" class="navbar-button"
+                    onclick="window.location.href='{% url 'details user' pk=request.user.pk %}'">
+                Profile
+            </button>
+        </li>
+        <li>
+            <button type="button" class="navbar-button"
+                    onclick="window.location.href='{% url 'logout user' %}'">
+                Sign out
+            </button>
+        </li>
+
+    </ul>
+</nav>
+<section>
+    {% block page_content %}
+    {% endblock %}
+</section>
+</body>
+
+
+<footer>
+    MADE BY KRUFEEE ONLY FOR EXAM
+</footer>
+</html>

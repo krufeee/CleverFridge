@@ -1,0 +1,39 @@
+{% extends 'base/core.html' %}
+{% block page_content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/my_recipes.css' %}">
+    <h1 style="text-align: center">Your recipes</h1>
+    <div style="text-align: center">
+        {% if recipes %}
+            <div>
+                <ul>
+                    {% for recipe in recipes %}
+                        <li class="grid-container">
+                            <p>{{ recipe.recipe_name }} - {{ recipe.recipe_type }}</p>
+                            <p>
+                                <img width="200" height="150" src="/media/{{ recipe.recipe_picture }}" alt="None">
+                            </p>
+                            <p>
+                                <button type="button" class="ingredient-button"
+                                        onclick="window.location.href='{% url 'detail recipe' pk=recipe.pk %}'">
+                                    Details
+                                </button>
+                            </p>
+
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <p>U have no recipes yet</p>
+        {% endif %}
+        <p>
+            <button type="button" class="ingredient-button"
+                    onclick="window.location.href='{% url 'add recipe' %}'">
+                Add Recipe
+            </button>
+        </p>
+    </div>
+
+
+{% endblock %}

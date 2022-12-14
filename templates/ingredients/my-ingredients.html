@@ -1,0 +1,40 @@
+{% extends 'base/core.html' %}
+
+{% block page_content %}
+    {% load static %}
+    <section>
+        <link rel="stylesheet" href="{% static 'css/my_ingredients.css' %}">
+        <div style="text-align: center">
+            <h1>My ingredients</h1>
+            <div>
+                <button type="button" class="ingredient-button"
+                        onclick="window.location.href='{% url 'add ingredient' %}'">
+                    Add ingredient
+                </button>
+            </div>
+            <div>
+                {% if products %}
+                    <table border="1" bgcolor=#f5f5dc align="center">
+                        {% for product in products %}
+                            <tr>
+                                <td>{{ product.ingredients }}</td>
+                                <td>{{ product.amount }}</td>
+                                <td><a href="../ingredients/delete/{{ product.pk }}">delete </a></td>
+                                <td><a href="../ingredients/edit/{{ product.pk }}">edit</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p>Your fridge is empty</p>
+                {% endif %}
+            </div>
+            <div>
+                <button type="button" class="ingredient-button"
+                        onclick="window.location.href='{% url 'possible recipes' %}'">
+                    What can I cook?
+                </button>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

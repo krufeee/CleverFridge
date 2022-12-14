@@ -1,0 +1,6 @@
+<div style="text-align: center">
+    <form method="post" action="{% url 'delete user' pk=request.user.pk %}">
+        <button>Delete</button>
+    {% csrf_token %}
+</div>
+{% include 'base/partials/footer.html' %}

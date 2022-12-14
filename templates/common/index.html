@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+</head>
+<body style="text-align: center">
+<h1>Wellcome to 'Clever fridge'</h1>
+<div class="container">
+    <div>
+        <a href="{% url 'login user' %}">Log in</a>
+    </div>
+    <div>
+        <a href="{% url 'register user' %}">Register</a>
+    </div>
+
+</div>
+<div>
+        <h2>{{ description.description }}</h2>
+</div>
+
+{% include 'base/partials/footer.html' %}
+
+</body>
+</html>

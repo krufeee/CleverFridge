@@ -1,0 +1,10 @@
+{% extends 'base/core.html' %}
+{% block page_content %}
+    <div>
+        <form enctype="multipart/form-data" method="post" action="{% url 'delete recipe' pk=object.pk %}">
+            {{ form.as_p }}
+            <button>Delete</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

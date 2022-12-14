@@ -1,0 +1,21 @@
+{% extends 'base/core.html' %}
+{% block page_content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+    <body>
+
+    <div>
+        <div class="button">
+            <button type="button" class="block" onclick="window.location.href='{% url 'my ingredients' %}'">
+                My Ingredients
+            </button>
+        </div>
+        <div class="button">
+            <button type="button" class="block" onclick="window.location.href='{% url 'my recipes' %}'">
+                My Recipes
+            </button>
+        </div>
+    </div>
+    </body>
+
+{% endblock %}

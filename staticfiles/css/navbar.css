@@ -1,0 +1,45 @@
+
+nav {
+    width: 100%;
+    background: rosybrown;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    margin: auto;
+    padding: 0;
+    display: block;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    padding: 8px;
+    background-color: rosybrown;
+}
+
+footer {
+    background: rosybrown;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 20px;
+}
+
+.navbar-button {
+    padding: 9px;
+    border: beige;
+    color: beige;
+    background-color: rosybrown;
+    cursor: pointer;
+}
+
+body {
+    background-color: azure;
+    background-size: cover;
+}

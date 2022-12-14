@@ -1,0 +1,14 @@
+{% extends 'base/core.html' %}
+
+{% block page_content %}
+    <div style="text-align: center">
+        <form enctype="multipart/form-data" method="post" action="{% url 'add recipe' %}">
+            {{ form.as_p }}
+            <button type="submit">Add recipe</button>
+            {% csrf_token %}
+        </form>
+
+    </div>
+
+
+{% endblock %}

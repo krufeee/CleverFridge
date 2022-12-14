@@ -1,0 +1,7 @@
+.ingredient-button {
+    display: inline-block;
+    cursor: pointer;
+    margin: 1rem;
+    background-color: beige;
+    border-color: rosybrown;
+}
