@@ -1,0 +1,21 @@
+.ingredient-button {
+    display: inline-block;
+    cursor: pointer;
+    margin: 1rem;
+    background-color: beige;
+    border-color: rosybrown;
+}
+
+div {
+    border-style: outset;
+    border-color: rosybrown;
+    margin: 10px;
+    background-color: beige;
+    align-items: center;
+    text-align: center;
+    text-decoration: None;
+}
+
+form {
+    display: inline-grid;
+}

@@ -36,7 +36,7 @@ class RecipeDetailsView(LoginRequiredMixin, generic.DetailView):
 
     def get_context_data(self, **kwargs):
         result = super().get_context_data(**kwargs)
-        result['requested_user'] = self.request.user.username
+        result['requested_user'] = self.request.user.pk
 
         return result
 

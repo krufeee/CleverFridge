@@ -1,7 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
 <div style="text-align: center">
+    <p> Do you want to remove this ingredient from your fridge?</p>
     <form method="post" action="{% url 'delete ingredient' pk=object.pk %}">
-        {{ form.as_p }}
-        <button>Delete</button>
+        <button class="ingredient-button">Yes</button>
+        <button type="button" class="ingredient-button"
+                onclick="window.location.href='{% url 'my ingredients'%}'" style="width: 17rem">
+            No
+        </button>
         {% csrf_token %}
     </form>
 </div>

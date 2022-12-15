@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,15 +13,21 @@
 <h1>Wellcome to 'Clever fridge'</h1>
 <div class="container">
     <div>
-        <a href="{% url 'login user' %}">Log in</a>
+        <button type="button" class="block"
+                onclick="window.location.href='{% url 'login user' %}'">
+            Log in
+        </button>
     </div>
     <div>
-        <a href="{% url 'register user' %}">Register</a>
+        <button type="button" class="block"
+                onclick="window.location.href='{% url 'register user' %}'">
+            Register
+        </button>
     </div>
 
 </div>
-<div>
-        <h2>{{ description.description }}</h2>
+<div class="description">
+    <h2>{{ description.description }}</h2>
 </div>
 
 {% include 'base/partials/footer.html' %}

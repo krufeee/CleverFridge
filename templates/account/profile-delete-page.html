@@ -1,6 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
 <div style="text-align: center">
     <form method="post" action="{% url 'delete user' pk=request.user.pk %}">
-        <button>Delete</button>
-    {% csrf_token %}
+        <p>{{ object.username }} do you really want to delete your profile?</p>
+
+        <button class="ingredient-button">Yes</button>
+        <button type="button" class="ingredient-button"
+                onclick="window.location.href='{% url 'details user' pk=request.user.pk %}'" style="width: 17rem">
+            No
+        </button>
+
+        {% csrf_token %}
+    </form>
+    <p>
+
+    </p>
 </div>
 {% include 'base/partials/footer.html' %}

@@ -14,13 +14,17 @@
             </div>
             <div>
                 {% if products %}
-                    <table border="1" bgcolor=#f5f5dc align="center">
+                    <table border="1" bgcolor=#f5f5dc align="center" style="border-color: rosybrown">
                         {% for product in products %}
                             <tr>
                                 <td>{{ product.ingredients }}</td>
                                 <td>{{ product.amount }}</td>
-                                <td><a href="../ingredients/delete/{{ product.pk }}">delete </a></td>
-                                <td><a href="../ingredients/edit/{{ product.pk }}">edit</a></td>
+                                <td>
+                                    <button style="margin: 0" type="button" class="ingredient-button"
+                                            onclick="window.location.href='{% url 'delete ingredient' product.pk %}'">
+                                        remove
+                                    </button>
+                                </td>
                             </tr>
                         {% endfor %}
                     </table>

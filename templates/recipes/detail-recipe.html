@@ -21,7 +21,8 @@
                 <p>{{ ingredient.name }}</p>
             {% endfor %}
         </ul>
-        {% if  object.user == requested_user %}
+        {% if  object.user.pk == requested_user %}
+
             <p>
                 <a href="{% url 'edit recipe' pk=object.pk %}">Edit</a>
                 <a href="{% url 'delete recipe' pk=object.pk %}">Delete</a>

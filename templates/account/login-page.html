@@ -1,8 +1,17 @@
-<form method="post" action="{% url 'login user' %}" style="text-align: center">
-    {{ form.as_p }}
-    <button type="submit" >Log in</button>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+<div>
+    <form method="post" action="{% url 'login user' %}" style="text-align: center">
+        {{ form.as_p }}
+        <button type="submit" class="ingredient-button">
+            Log in
+        </button>
+
+        {% csrf_token %}
+    </form>
     <p>
-        <a href="{% url 'register user' %}">If u don`t have account, press here.</a>
+        <button type="button" class="ingredient-button" onclick="window.location.href='{% url 'register user' %}'">
+            If u don`t have account, press here
+        </button>
     </p>
-    {% csrf_token %}
-</form>
+</div>

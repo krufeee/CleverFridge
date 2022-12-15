@@ -1,5 +1,9 @@
-<form method="post" action="{% url 'edit user' pk=object.pk%}" style="text-align: center">
-    {{ form.as_p }}
-    <button type="submit">Edit</button>
-    {% csrf_token %}
-</form>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+<div>
+    <form method="post" action="{% url 'edit user' pk=object.pk %}" style="text-align: center">
+        {{ form.as_p }}
+        <button type="submit" class="ingredient-button">Edit</button>
+        {% csrf_token %}
+    </form>
+</div>
