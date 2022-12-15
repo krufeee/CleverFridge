@@ -1,3 +1,18 @@
+div {
+    border-style: outset;
+    border-color: rosybrown;
+    display: grid;
+    grid-row-start: auto;
+    grid-area: auto;
+    grid-auto-flow: column;
+    grid-auto-rows: auto;
+    grid-gap: 5px;
+}
+
+form {
+    display: inline-grid;
+}
+
 .ingredient-button {
     display: inline-block;
     cursor: pointer;
@@ -6,7 +21,7 @@
     border-color: rosybrown;
 }
 
-div {
+.block {
     border-style: outset;
     border-color: rosybrown;
     margin: 10px;
@@ -15,17 +30,3 @@ div {
     text-align: center;
     text-decoration: None;
 }
-
-form {
-    display: inline-grid;
-}
-
-.grid-container {
-    display: grid;
-    border-style: outset;
-    border-color: rosybrown;
-    margin: 10px;
-    background-color: beige;
-    align-items: center;
-}
-

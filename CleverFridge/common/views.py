@@ -22,3 +22,7 @@ class IndexView(generic.TemplateView):
 
 class HomepageView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'common/homepage.html'
+    def get_context_data(self, **kwargs):
+        result = super().get_context_data(**kwargs)
+        result['current_user'] = self.request.user.username
+        return result

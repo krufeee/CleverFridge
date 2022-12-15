@@ -3,7 +3,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
     <body>
-
+    <h1 style="text-align: center"> Wellcome {{ current_user.capitalize }}</h1>
     <div>
         <div class="button">
             <button type="button" class="block" onclick="window.location.href='{% url 'my ingredients' %}'">

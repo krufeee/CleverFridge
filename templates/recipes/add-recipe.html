@@ -1,14 +1,25 @@
 {% extends 'base/core.html' %}
-
 {% block page_content %}
-    <div style="text-align: center">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/add_recipes.css' %}">
+    <section class="block" style="text-align: center">
         <form enctype="multipart/form-data" method="post" action="{% url 'add recipe' %}">
-            {{ form.as_p }}
-            <button type="submit">Add recipe</button>
+            {#                        {{ form.as_div }}#}
+            <span>Recipe name:</span>
+            <p>{{ form.recipe_name }}</p>
+            <span>Recipe type: </span>
+            <p>{{ form.recipe_type }}</p>
+            <span>Cooking instruction: </span>
+            <p>{{ form.recipe_cooking_instruction }}</p>
+            <span>Recipe picture: </span>
+            <p>{{ form.recipe_picture }}</p>
+            <span>Ingredients: </span>
+            <p>{{ form.ingredients }}</p>
+            <p><button class="ingredient-button" type="submit">Add recipe</button></p>
             {% csrf_token %}
         </form>
 
-    </div>
+    </section>
 
 
 {% endblock %}
