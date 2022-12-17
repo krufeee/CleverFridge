@@ -12,9 +12,11 @@ class IngredientCreateForm(forms.ModelForm):
 class IngredientAddToFridgeForm(forms.ModelForm):
     ingredients = forms.ModelChoiceField(
         queryset=IngredientCreateModel.objects.all().order_by('name'),
-        empty_label=None,
+        # empty_label=None,
         # to_field_name='name'
     )
+
+
     class Meta:
         model = IngredientAddToFridgeModel
         exclude = ('user',)

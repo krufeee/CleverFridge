@@ -5,4 +5,4 @@ from CleverFridge.recipes.models import RecipeCreateModel
 
 @admin.register(RecipeCreateModel)
 class RecipeCreateAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('recipe_type',)

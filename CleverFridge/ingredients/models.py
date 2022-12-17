@@ -41,10 +41,15 @@ class IngredientCreateModel(models.Model):
 
 class IngredientAddToFridgeModel(models.Model):
 
-    ingredients = models.ForeignKey(
+    ingredients = models.OneToOneField(
+
         IngredientCreateModel,
         on_delete=models.CASCADE,
+        error_messages={'unique_check':'You already have this ingredient in your fridge.'},
+
     )
+
+
     #todo when cook func is implemented
 
     # amount = models.PositiveIntegerField(

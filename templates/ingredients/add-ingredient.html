@@ -2,15 +2,15 @@
 
 {% block page_content %}
     {% load static %}
-<link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 
-<div style="text-align: center">
-    <form method="post" action="{% url 'add ingredient' %}">
-        {{ form.as_p }}
+    <div style="text-align: center">
+        <form method="post" action="{% url 'add ingredient' %}">
+            {{ form.as_p }}
 
-        <button class="ingredient-button" type="submit">Add ingredient to the fridge</button>
-        {% csrf_token %}
-    </form>
+            <button class="ingredient-button" type="submit">Add ingredient to the fridge</button>
+            {% csrf_token %}
+        </form>
 
-</div>
+    </div>
 {% endblock %}

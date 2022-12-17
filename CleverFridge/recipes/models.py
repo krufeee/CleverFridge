@@ -12,6 +12,7 @@ class RecipeCreateModel(models.Model):
     INSTRUCTIONS_MAX_LEN = 3000
     TYPE_MAX_LEN = 10
     RECIPE_NAME_MAX_LEN = 30
+    SALAD = 'salad'
     APPETIZER = 'appetizer'
     MAIN_DISH = 'main dish'
     DESSERT = 'dessert'
@@ -19,6 +20,7 @@ class RecipeCreateModel(models.Model):
         (APPETIZER,APPETIZER),
         (MAIN_DISH, MAIN_DISH),
         (DESSERT,DESSERT),
+        (SALAD,SALAD),
 
     )
 

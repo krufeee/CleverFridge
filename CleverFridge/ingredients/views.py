@@ -9,13 +9,13 @@ from CleverFridge.ingredients.models import IngredientAddToFridgeModel
 
 class MyIngredientsView(LoginRequiredMixin, generic.TemplateView):
     template_name = 'ingredients/my-ingredients.html'
+
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        result = super().get_context_data(**kwargs)
 
         ingredients = get_ingredients_by_pk(self.request.user.pk)
-        context['products'] = ingredients
-        return context
-
+        result['products'] = ingredients
+        return result
 
 
 class IngredientAddToFridgeView(LoginRequiredMixin, generic.CreateView):
@@ -26,6 +26,7 @@ class IngredientAddToFridgeView(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
 
 
 class IngredientEditInFridgeView(LoginRequiredMixin, generic.UpdateView):
@@ -39,6 +40,3 @@ class IngredientDeleteFromFridgeView(LoginRequiredMixin, generic.DeleteView):
     template_name = './ingredients/delete-ingredient.html'
     model = IngredientAddToFridgeModel
     success_url = reverse_lazy('my ingredients')
-
-
-

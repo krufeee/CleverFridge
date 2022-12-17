@@ -7,3 +7,4 @@ from CleverFridge.ingredients.models import IngredientCreateModel
 @admin.register(IngredientCreateModel)
 class Ingredients(admin.ModelAdmin):
     list_display = ('name', 'unit')
+    ordering = ('name',)
