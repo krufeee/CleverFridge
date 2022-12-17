@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
+from django.utils.text import slugify
 
 from CleverFridge.ingredients.models import IngredientCreateModel
 
@@ -52,14 +54,31 @@ class RecipeCreateModel(models.Model):
         null=True,
 
     )
+    slug = models.SlugField(
+        unique=True,
+        null=False,
+        blank=True,
+    )
 
     ingredients = models.ManyToManyField(
         IngredientCreateModel,
 
     )
 
+    def get_absolute_url(self):
+        return reverse("detail recipe", kwargs={"slug": self.slug})
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if not self.slug:
+            self.slug = slugify(f'{self.id}-{self.recipe_name}')
+        return super().save(*args, **kwargs)
+
+
     def __str__(self):
         return f'{self.recipe_name} - {self.recipe_type}'
+
 
     class Meta:
         verbose_name = 'Add Recipe'

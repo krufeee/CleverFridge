@@ -6,7 +6,7 @@ from CleverFridge.recipes.views import RecipeCreateView, MyRecipesShowView, Reci
 urlpatterns = (
     path('', MyRecipesShowView.as_view(), name='my recipes'),
     path('add/', RecipeCreateView.as_view(), name='add recipe'),
-    path('details/<int:pk>/', RecipeDetailsView.as_view(), name='detail recipe'),
+    path('details/<slug:slug>', RecipeDetailsView.as_view(), name='detail recipe'),
     path('edit/<int:pk>/', RecipeEditView.as_view(), name='edit recipe'),
     path('delete/<int:pk>/', RecipeDeleteView.as_view(), name='delete recipe'),
     path('possible-recipes/', PossibleRecipesView.as_view(), name='possible recipes'),

@@ -45,11 +45,12 @@ class IngredientAddToFridgeModel(models.Model):
         IngredientCreateModel,
         on_delete=models.CASCADE,
     )
+    #todo when cook func is implemented
 
-    amount = models.PositiveIntegerField(
-        blank=False,
-        null=False,
-    )
+    # amount = models.PositiveIntegerField(
+    #     blank=False,
+    #     null=False,
+    # )
 
 
     user = models.ForeignKey(

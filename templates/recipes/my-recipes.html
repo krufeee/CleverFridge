@@ -15,7 +15,8 @@
                             </p>
                             <p>
                                 <button type="button" class="ingredient-button"
-                                        onclick="window.location.href='{% url 'detail recipe' pk=recipe.pk %}'">
+{#                                        onclick="window.location.href='{% url 'detail recipe' pk=recipe.pk %}'">#}
+                                        onclick="window.location.href='{{recipe.get_absolute_url}} '">
                                     Details
                                 </button>
                             </p>
@@ -29,7 +30,7 @@
         {% endif %}
         <p>
             <button type="button" class="ingredient-button"
-                    onclick="window.location.href='{% url 'add recipe' %}'">
+                    onclick="window.location.href='{% url 'add recipe'%}'">
                 Add Recipe
             </button>
         </p>
