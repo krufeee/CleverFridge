@@ -1,25 +1,35 @@
 {% extends 'base/core.html' %}
 {% block page_content %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/add_recipes.css' %}">
-    <section class="block" style="text-align: center">
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+<div>
         <form enctype="multipart/form-data" method="post" action="{% url 'add recipe' %}">
             {#                        {{ form.as_div }}#}
-            <span>Recipe name:</span>
-            <p>{{ form.recipe_name }}</p>
-            <span>Recipe type: </span>
-            <p>{{ form.recipe_type }}</p>
-            <span>Cooking instruction: </span>
-            <p>{{ form.recipe_cooking_instruction }}</p>
-            <span>Recipe picture: </span>
-            <p>{{ form.recipe_picture }}</p>
+            <div>
+                <h1>Recipe name:</h1>
+                <p>{{ form.recipe_name }}</p>
+            </div>
+            <div>
+                <h2>Recipe type:</h2>
+                <p>{{ form.recipe_type }}</p>
+            </div>
+            <div>
+                <h3>Cooking instruction:</h3>
+                <p>{{ form.recipe_cooking_instruction }}</p>
+            </div>
+            <div>
+                <span>Recipe picture: </span>
+                <p>{{ form.recipe_picture }}</p>
+            </div>
             <span>Ingredients: </span>
             <p>{{ form.ingredients }}</p>
-            <p><button class="ingredient-button" type="submit">Add recipe</button></p>
+            <p>
+                <button class="ingredient-button" type="submit">Add recipe</button>
+            </p>
             {% csrf_token %}
         </form>
 
-    </section>
+</div>
 
 
 {% endblock %}

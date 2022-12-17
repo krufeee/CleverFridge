@@ -1,11 +1,13 @@
 {% extends 'base/core.html' %}
 {% block page_content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     <div style="text-align: center">
         <p>
-            {{ object.recipe_name }}
+        <h1>{{ object.recipe_name }}</h1>
         </p>
         <p>
-            {{ object.recipe_type }}
+        <h2>{{ object.recipe_type }}</h2>
         </p>
         <p>
             <img width="300" src="/media/{{ object.recipe_picture }}">
@@ -14,18 +16,32 @@
             Uploaded from: {{ object.user }}
         </p>
         <p>
+        <div>
+            <h3>Cooking instructions:</h3>
             {{ object.recipe_cooking_instruction }}
+        </div>
         </p>
         <ul>
-            {% for ingredient in object.ingredients.all %}
-                <p>{{ ingredient.name }}</p>
-            {% endfor %}
+            <div>
+                <h3>
+                    Needed ingredients:
+                </h3>
+                {% for ingredient in object.ingredients.all %}
+                    <p>{{ ingredient.name }}</p>
+                {% endfor %}
+            </div>
         </ul>
         {% if  object.user.pk == requested_user %}
 
             <p>
-                <a href="{% url 'edit recipe' pk=object.pk %}">Edit</a>
-                <a href="{% url 'delete recipe' pk=object.pk %}">Delete</a>
+                <button style="margin: 0" type="button" class="ingredient-button"
+                        onclick="window.location.href='{% url 'edit recipe' pk=object.pk %}'">
+                    Edit
+                </button>
+                <button style="margin: 0" type="button" class="ingredient-button"
+                        onclick="window.location.href='{% url 'delete recipe' pk=object.pk %}'">
+                    Delete
+                </button>
             </p>
         {% endif %}
     </div>

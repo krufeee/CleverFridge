@@ -1,9 +1,31 @@
 {% extends 'base/core.html' %}
 {% block page_content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     <div>
-        <form enctype="multipart/form-data" method="post" action="{% url 'edit recipe' pk=object.pk%}">
-            {{ form.as_p }}
-            <button type="submit">Edit</button>
+        <form enctype="multipart/form-data" method="post" action="{% url 'edit recipe' pk=object.pk %}">
+            {#            {{ form.as_p }}#}
+            <div>
+                <h1>Recipe name:</h1>
+                <p>{{ form.recipe_name }}</p>
+            </div>
+            <div>
+                <h2>Recipe type:</h2>
+                <p>{{ form.recipe_type }}</p>
+            </div>
+            <div>
+                <h3>Cooking instruction:</h3>
+                <p>{{ form.recipe_cooking_instruction }}</p>
+            </div>
+            <div>
+                <span>Recipe picture: </span>
+                <p>{{ form.recipe_picture }}</p>
+            </div>
+            <span>Ingredients: </span>
+            <p>{{ form.ingredients }}</p>
+            <p>
+                <button class="ingredient-button" type="submit">Edit</button>
+            </p>
             {% csrf_token %}
         </form>
     </div>
