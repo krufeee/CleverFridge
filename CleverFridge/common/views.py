@@ -3,6 +3,9 @@ from django.shortcuts import redirect
 from django.views import generic
 
 from CleverFridge.common.models import HomepageWellcomeTextModel
+from CleverFridge.core.random_recipes_utils import get_random_possible_recipe_by_recipe_type, filter_recipes_by_type
+from CleverFridge.core.recipe_utils import get_possible_recipes_return_list_of_pk
+from CleverFridge.recipes.models import RecipeCreateModel
 
 
 class IndexView(generic.TemplateView):
@@ -10,8 +13,7 @@ class IndexView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         result = super().get_context_data(**kwargs)
-
-        result['description'] = HomepageWellcomeTextModel.objects.get()
+        result['description'] = HomepageWellcomeTextModel.objects.first()   #fixed after deadline , was .get()
         return result
 
     def dispatch(self, request, *args, **kwargs):
@@ -21,8 +23,18 @@ class IndexView(generic.TemplateView):
 
 
 class HomepageView(LoginRequiredMixin, generic.TemplateView):
+    SALAD = RecipeCreateModel.SALAD
+    APPETIZER = RecipeCreateModel.APPETIZER
+    MAIN_DISH = RecipeCreateModel.MAIN_DISH
+    DESSERT = RecipeCreateModel.DESSERT
+
     template_name = 'common/homepage.html'
+    # Todo implement random possible recipes to be showed on homepage
+
     def get_context_data(self, **kwargs):
         result = super().get_context_data(**kwargs)
-        result['current_user'] = self.request.user.username
+        all_possible_recipes =get_possible_recipes_return_list_of_pk(self.request.user.pk)
+        filtered_recipes = filter_recipes_by_type(all_possible_recipes)
+        random_recipes = get_random_possible_recipe_by_recipe_type(filtered_recipes)
+        result['random_recipes'] = random_recipes
         return result

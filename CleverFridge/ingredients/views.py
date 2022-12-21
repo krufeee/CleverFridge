@@ -12,7 +12,6 @@ class MyIngredientsView(LoginRequiredMixin, generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         result = super().get_context_data(**kwargs)
-
         ingredients = get_ingredients_by_pk(self.request.user.pk)
         result['products'] = ingredients
         return result
@@ -28,7 +27,7 @@ class IngredientAddToFridgeView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-
+#Todo enable this after creating cooking app
 class IngredientEditInFridgeView(LoginRequiredMixin, generic.UpdateView):
     template_name = './ingredients/edit-ingredient.html'
     model = IngredientAddToFridgeModel

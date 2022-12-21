@@ -12,7 +12,7 @@ UserModel = get_user_model()
 class SignUpView(CreateView):
     template_name = 'account/register-page.html'
     form_class = UserCreateForm
-    success_url = reverse_lazy('index')
+
 
     def form_valid(self, form):
         result = super().form_valid(form)
@@ -34,10 +34,10 @@ class UserDetailsView(LoginRequiredMixin, DetailView):
     model = UserModel
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        result = super().get_context_data(**kwargs)
 
-        context['is_owner'] = self.request.user == self.object
-        return context
+        result['is_owner'] = self.request.user == self.object
+        return result
 
 
 class UserEditView(LoginRequiredMixin, UpdateView):

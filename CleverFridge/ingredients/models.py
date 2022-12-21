@@ -50,7 +50,7 @@ class IngredientAddToFridgeModel(models.Model):
     )
 
 
-    #todo when cook func is implemented
+    #todo when cook app is implemented
 
     # amount = models.PositiveIntegerField(
     #     blank=False,

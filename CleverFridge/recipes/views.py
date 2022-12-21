@@ -1,9 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 from django.urls import reverse_lazy
 from django.views import generic
 
 from CleverFridge.core.recipe_utils import get_recipes_by_pk, \
-    get_possible_recipes_return_list_of_pk, return_list_of_objects_by_list_of_pk, return_possible_recipe_params
+    get_possible_recipes_return_list_of_pk, return_list_of_objects_by_list_of_pk, return_possible_recipe_params, \
+    get_recipes_by_slug
 from CleverFridge.recipes.forms import RecipeCreateForm
 from CleverFridge.recipes.models import RecipeCreateModel
 
@@ -37,7 +39,6 @@ class RecipeDetailsView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, **kwargs):
         result = super().get_context_data(**kwargs)
         result['requested_user'] = self.request.user.pk
-
         return result
 
 
