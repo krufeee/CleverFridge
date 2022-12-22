@@ -3,8 +3,8 @@ from django.shortcuts import redirect
 from django.views import generic
 
 from CleverFridge.common.models import HomepageWellcomeTextModel
-from CleverFridge.core.random_recipes_utils import get_random_possible_recipe_by_recipe_type, filter_recipes_by_type, \
-    get_params
+from CleverFridge.core.random_recipes_utils import get_random_possible_recipe_by_recipe_type, filter_recipes_by_type_returns_dict, \
+    get_params_returns_list_of_lists
 from CleverFridge.core.recipe_utils import get_possible_recipes_return_list_of_pk
 from CleverFridge.recipes.models import RecipeCreateModel
 
@@ -35,10 +35,9 @@ class HomepageView(LoginRequiredMixin, generic.TemplateView):
         result = super().get_context_data(**kwargs)
         current_user = self.request.user.username
         all_possible_recipes =get_possible_recipes_return_list_of_pk(self.request.user.pk)
-        filtered_recipes = filter_recipes_by_type(all_possible_recipes)
+        filtered_recipes = filter_recipes_by_type_returns_dict(all_possible_recipes)
         random_recipes_beta= get_random_possible_recipe_by_recipe_type(filtered_recipes)
-        random_recipes = get_params(random_recipes_beta)
+        random_recipes = get_params_returns_list_of_lists(random_recipes_beta)
         result['random_recipes'] = random_recipes
-        # result['recipe_set'] = random_recipes[4]
         result['current_user'] = current_user
         return result

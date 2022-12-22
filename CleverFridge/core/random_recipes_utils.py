@@ -1,7 +1,7 @@
 import random
 
 
-from CleverFridge.core.recipe_utils import return_list_of_objects_by_list_of_pk, return_possible_recipe_params
+from CleverFridge.core.recipe_utils import return_list_of_objects_by_list_of_pk
 from CleverFridge.recipes.models import RecipeCreateModel
 def get_possible_recipe_types_returns_list():
     list_of_types = []
@@ -10,7 +10,7 @@ def get_possible_recipe_types_returns_list():
         list_of_types.append(option[0])
     return list_of_types
 
-def filter_recipes_by_type(list_of_pk):
+def filter_recipes_by_type_returns_dict(list_of_pk):
     list_of_possible_recipe = return_list_of_objects_by_list_of_pk(list_of_pk)
     dict_of_possible_recipes_filtered_by_type = {}
     for qset in list_of_possible_recipe:
@@ -34,7 +34,7 @@ def get_random_possible_recipe_by_recipe_type(dict_of_qsets):
             pass
     return list_of_random_possible_recipe
 
-def get_params(list_of_qsets):
+def get_params_returns_list_of_lists(list_of_qsets):
     qsets_params_list = []
     for qset in list_of_qsets:
         current_list = []
