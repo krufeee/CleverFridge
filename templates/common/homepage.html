@@ -19,24 +19,31 @@
                 My Recipes
             </button>
         </div>
+        <div class="button">
+            <button type="button"
+                    class="block"
+                    onclick="window.location.href='#'">
+                My Weekly Menu
+            </button>
+        </div>
     </div>
     <div>
         {% if random_recipes %}
             <ul>
                 {% for recipe in random_recipes %}
-                        <div class="grid-container">
-                            <p>{{ recipe.recipe_name }} - {{ recipe.recipe_type }}</p>
-                            <p>
-                                <img width="200" height="150" src="/media/{{ recipe.recipe_picture }}" alt="None">
-                            </p>
-                            <p>
-                                <button type="button" class="ingredient-button"
-                                        {#onclick="window.location.href='{% url 'detail recipe' pk=recipe.pk %}'">#}
-                                        onclick="window.location.href='{{ recipe.get_absolute_url }} '">
-                                    Details
-                                </button>
-                            </p>
-                        </div>
+                    <div class="grid-container">
+                        <p>{{ recipe.0 }} - {{ recipe.1 }}</p>
+                        <p>
+                            <img width="200" height="150" src="/media/{{ recipe.2 }}" alt="None">
+                        </p>
+                        <p>
+                            <button type="button" class="ingredient-button"
+                                    onclick="window.location.href='{% url 'detail recipe' slug=recipe.3%}'">
+{#                                    onclick="window.location.href='{{ recipe_set.get_absolute_url }} '">#}
+                                Details
+                            </button>
+                        </p>
+                    </div>
                 {% endfor %}
             </ul>
         {% endif %}

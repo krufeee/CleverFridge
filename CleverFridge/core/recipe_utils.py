@@ -18,7 +18,7 @@ def get_recipe_by_recipe_pk(pk):
 
 
 def get_all_recipes_ingredients_returns_dict():
-    all_recipes = RecipeCreateModel.objects.all()
+    all_recipes = RecipeCreateModel.objects.all().order_by('recipe_type')
     ingredients_dict = {}
     for recipe in all_recipes:
         ingredients_dict[recipe.pk] = []
@@ -50,5 +50,4 @@ def return_possible_recipe_params(qset):
     for recipe in qset:
         for field in recipe:
             list_of_params.append(field)
-            print(list_of_params)
     return list_of_params
