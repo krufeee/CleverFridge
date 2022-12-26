@@ -32,7 +32,7 @@ class RecipeCreateView(LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class RecipeDetailsView(LoginRequiredMixin, generic.DetailView):
+class RecipeDetailsView(generic.DetailView):
     template_name = 'recipes/detail-recipe.html'
     model = RecipeCreateModel
 

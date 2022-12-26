@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.views import generic
@@ -7,6 +8,8 @@ from CleverFridge.core.random_recipes_utils import get_random_possible_recipe_by
     get_params_returns_list_of_lists
 from CleverFridge.core.recipe_utils import get_possible_recipes_return_list_of_pk
 from CleverFridge.recipes.models import RecipeCreateModel
+
+UserModel = get_user_model()
 
 
 class IndexView(generic.TemplateView):
